@@ -37,7 +37,7 @@ jobs:
           cache: "pnpm"
 
       - name: Installer les dépendances
-        run: pnpm install
+        run: pnpm ci
 
       - name: Construire le site web
         run: pnpm build
