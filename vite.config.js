@@ -11,7 +11,4 @@ export default defineConfig({
         outDir: "dist",
         minify: true,
     },
-    server: {
-        allowedHosts: ["majority-flickr-pieces-leonard.trycloudflare.com"]
-    }
 });
