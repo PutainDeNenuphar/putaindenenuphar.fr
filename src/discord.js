@@ -56,4 +56,9 @@ export async function discord() {
         sdk = null;
         console.error(e);
     }
-};
+
+    return {
+        access_token,
+        sdk,
+    };
+}
