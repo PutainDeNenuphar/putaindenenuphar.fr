@@ -15,7 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 import { snapdom } from "@zumer/snapdom";
+import { discord } from "./discord";
 
+const discordInstance = await discord();
 const post = document.getElementById("post");
 const colorToolbar = document.getElementById("color-toolbar");
 const shareButton = document.getElementById("share-button");
@@ -29,10 +31,24 @@ shareButton.addEventListener("click", async e => {
     });
 
     const image = await snapdom(post);
-    await image.download({
-        format: "png",
-        filename: `${crypto.randomUUID()}.png`
-    });
+    const filename = `${crypto.randomUUID()}.png`;
+
+    if (discordInstance) {
+        const body = new FormData();
+        body.append("file", await image.toBlob({ type: "png" }), filename);
+
+        const { attachment } = await fetch(`https://discord.com/api/applications/${discordInstance.sdk.clientId}/attachment`, {
+            method: "POST",
+            headers: { Authorization: `Bearer ${discordInstance.access_token}` },
+            body,
+        }).then(response => response.json());
+        await discordInstance.sdk.commands.openShareMomentDialog({ mediaUrl: attachment.url });
+    } else {
+        await image.download({
+            format: "png",
+            filename,
+        });
+    }
 
     shareButton.classList.add("hover:bg-[#3B3D3E]");
     colorToolbar.style.display = "";

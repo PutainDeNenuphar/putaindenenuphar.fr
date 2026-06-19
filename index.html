@@ -36,7 +36,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
                     <!-- Photo de profil -->
                     <div class="rounded-full overflow-hidden">
                         <label class="hover:cursor-pointer hover:opacity-70">
-                            <img id="avatar" src="/big-brother.png" class="w-10 h-10 rounded-full" />
+                            <img id="avatar" src="/images/big-brother.png" class="w-10 h-10 rounded-full" />
                             <input type="file" id="avatar-input" accept="image/avif,image/gif,image/jpeg,image/png,image/webp" class="hidden" />
                         </label>
                     </div>
@@ -82,7 +82,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             <!-- Barre d'engagement & d'outils -->
             <div class="flex items-center">
                 <div class="px-4 py-3 rounded-bl-xl hover:bg-[#3B3D3E] hover:cursor-pointer transition-colors" id="share-button">
-                    <i style="filter:invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/yp/r/twpm7Tz4xLN.webp&quot;); background-position: 0px -588px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>
+                    <i style="filter:invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);background-image: url(/images/fb-icons.webp); background-position: 0px -588px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>
                 </div>
                 <div class="px-4 py-3" id="color-toolbar">
                     <input type="color" class="w-6 rounded bg-transparent border-none" id="bgColorPicker1" autocomplete="off" value="#74a77e" />
@@ -101,6 +101,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
         <!-- Fichiers JavaScript -->
         <script src="/src/avatars.js" type="module"></script>
         <script src="/src/backgroundColor.js" type="module"></script>
+        <script src="/src/discord.js" type="module"></script>
         <script src="/src/hashtags.js" type="module"></script>
         <script src="/src/quotation.js" type="module"></script>
         <script src="/src/textColor.js" type="module"></script>
