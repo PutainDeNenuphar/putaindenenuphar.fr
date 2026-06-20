@@ -33,7 +33,12 @@ shareButton.addEventListener("click", async e => {
     const image = await snapdom(post);
     const filename = `${crypto.randomUUID()}.png`;
 
-    if (discordInstance) {
+    if (discordInstance.sdk) {
+        if (!discordInstance.access_token) {
+            console.error("The code was not exchanged for a token usable by Discord's SDK.");
+            return;
+        }
+
         const body = new FormData();
         body.append("file", await image.toBlob({ type: "png" }), filename);
 
