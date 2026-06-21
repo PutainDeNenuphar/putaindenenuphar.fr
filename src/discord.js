@@ -37,7 +37,7 @@ export async function discord() {
         await sdk.ready();
 
         const { code } = await sdk.commands.authorize({
-            client_id: sdk.clientId,
+            client_id: import.meta.env.VITE_CLIENT_ID,
             response_type: "code",
             state: "",
             prompt: "none",
