@@ -41,6 +41,8 @@ jobs:
 
       - name: Construire le site web
         run: pnpm build
+        env:
+          VITE_CLIENT_ID: ${{ vars.VITE_CLIENT_ID }}
 
       - name: Téléverser les artifacts
         uses: actions/upload-pages-artifact@v5
