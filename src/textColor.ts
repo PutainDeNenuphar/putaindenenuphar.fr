@@ -14,9 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-const quotation = document.getElementById("quotation");
-const colorPicker = document.getElementById("textColorPicker");
+const quotation = document.querySelector<HTMLDivElement>("#quotation")!;
+const colorPicker = document.querySelector<HTMLInputElement>("#text-color-picker")!;
 
-colorPicker.addEventListener("input", e => {
+colorPicker.addEventListener("input", () => {
     quotation.style.color = colorPicker.value;
 });

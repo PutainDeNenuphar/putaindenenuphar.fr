@@ -18,11 +18,11 @@ import { snapdom } from "@zumer/snapdom";
 import { discord } from "./discord";
 
 const discordInstance = await discord();
-const post = document.getElementById("post");
-const colorToolbar = document.getElementById("color-toolbar");
-const shareButton = document.getElementById("share-button");
+const post = document.querySelector<HTMLDivElement>("#post")!;
+const colorToolbar = document.querySelector<HTMLDivElement>("#color-toolbar")!;
+const shareButton = document.querySelector<HTMLDivElement>("#share-button")!;
 
-shareButton.addEventListener("click", async e => {
+shareButton.addEventListener("click", async () => {
     shareButton.classList.remove("hover:bg-[#3B3D3E]");
     colorToolbar.style.display = "none";
 

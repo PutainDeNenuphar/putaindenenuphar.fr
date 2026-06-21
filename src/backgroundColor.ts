@@ -14,16 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-const quotation = document.getElementById("quotation");
-const colorPicker1 = document.getElementById("bgColorPicker1");
-const colorPicker2 = document.getElementById("bgColorPicker2");
+const quotation = document.querySelector<HTMLDivElement>("#quotation")!;
+const colorPicker1 = document.querySelector<HTMLInputElement>("#bg-color-picker-1")!;
+const colorPicker2 = document.querySelector<HTMLInputElement>("#bg-color-picker-2")!;
 
 function updateBackgroundGradient() {
-    quotation.style.background = `linear-gradient(
-        135deg,
-        ${colorPicker1.value},
-        ${colorPicker2.value}
-    )`;
+    quotation.style.background = `linear-gradient(135deg,${colorPicker1.value},${colorPicker2.value})`;
 }
 
 colorPicker1.addEventListener("input", updateBackgroundGradient);

@@ -14,22 +14,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-const hashtagsSpan = document.getElementById("hashtags");
+const hashtagsSpan = document.querySelector<HTMLSpanElement>("#hashtags")!;
 const sounds = [
     "charlie-kirk",
     "nggyu",
     "urss",
 ];
 
-const audios = {};
+const audios: Record<string, HTMLAudioElement> = {};
 for (const sound of sounds) {
     audios[sound] = new Audio(`/sounds/${sound}.mp3`);
 }
 
-hashtagsSpan.addEventListener("keyup", e => {
+hashtagsSpan.addEventListener("keyup", async () => {
     for (const sound of sounds) {
         if (hashtagsSpan.innerText.toLowerCase().includes(`#${sound}`)) {
-            audios[sound].play();
+            await audios[sound].play();
         } else {
             audios[sound].pause();
             audios[sound].currentTime = 0;

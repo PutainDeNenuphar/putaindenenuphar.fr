@@ -22,20 +22,23 @@ const ALLOWED_IMAGE_TYPES = [
     "image/webp",
 ];
 
-document.getElementById("avatar-input").addEventListener("change", e => {
-    if (!e.target.files || !e.target.files[0]) {
+const avatarInput = document.querySelector<HTMLInputElement>("#avatar-input")!;
+const avatar = document.querySelector<HTMLImageElement>("#avatar")!;
+
+avatarInput.addEventListener("change", () => {
+    const file = avatarInput.files?.[0];
+    if (!file) {
         return;
     }
 
-    const [file] = e.target.files;
     if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
         alert("L'image téléversée a un format non supporté.");
         return;
     }
 
     const reader = new FileReader();
-    reader.addEventListener("load", ev => {
-        document.getElementById("avatar").src = ev.target.result;
+    reader.addEventListener("load", () => {
+        avatar.src = reader.result as string;
     });
 
     reader.readAsDataURL(file);
