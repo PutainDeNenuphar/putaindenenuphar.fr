@@ -41,7 +41,10 @@ export async function discord() {
             response_type: "code",
             state: "",
             prompt: "none",
-            scope: ["rpc.activities.write"],
+            scope: [
+                "identify",
+                "rpc.activities.write"
+            ],
         });
 
         access_token = (await fetch("/discord/token", {
